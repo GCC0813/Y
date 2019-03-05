@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="ms.name">Y</Property>
+        <Property name="ms.version">2.0.1</Property>
+        <Property name="LOG_EXCEPTION_CONVERSION_WORD">%xwEx</Property>
+        <Property name="LOG_LEVEL_PATTERN">%5p</Property>
+        <!--颜色模式-->
+        <Property name="CONSOLE_LOG_PATTERN">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{${LOG_LEVEL_PATTERN}} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
+        <Property name="FILE_LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN} ${sys:PID} --- [%t] %-40.40c{1.} : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
+        <Property name="FILE_LOG_TraceId">[%X{traceId}][%t:%r] %d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN} ${sys:PID} --- [%t] %-40.40c{1.} : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
+        <!--<Property name="JSON">{&quot;ms.name&quot;:&quot;${ms.name}&quot;,&quot;ms.version&quot;:&quot;${ms.version}&quot;,&quot;host&quot;:&quot;${hostName}&quot;,&quot;date&quot;:&quot;%d{yyyy-MM-dd HH:mm:ss,SSS}&quot;,&quot;level&quot;:&quot;%p&quot;,&quot;logger&quot;:&quot;%c{1}&quot;,&quot;message&quot;:&quot;%enc{%m}&quot;,&quot;exception&quot;:&quot;%exception&quot;,&quot;thread&quot;:&quot;%t&quot;}%n"</Property>-->
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <!--<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p (%c{1}:%L) - %m%n" />-->
+            <PatternLayout pattern="(From:%X{Src} UserType:%X{UserType} UserId:%X{UserId}) %d{yyyy-MM-dd HH:mm:ss,SSS}:%4p (%c{1}:%L) - %m%n" />
+            <!--<JsonLayout complete="false" compact="true" eventEol="true">-->
+            <!--<JsonLayout complete="false" compact="false" eventEol="true">-->
+                <!--<KeyValuePair key="svName" value="${ms.name}"/>-->
+                <!--<KeyValuePair key="svVer" value="${ms.version}"/>-->
+                <!--<KeyValuePair key="Src" value="$${ctx:Src}"/>-->
+                <!--<KeyValuePair key="UserType" value="$${ctx:UserType}"/>-->
+                <!--<KeyValuePair key="UserId" value="$${ctx:UserId}"/>-->
+            <!--</JsonLayout>-->
+        </Console>
+
+        <RollingFile name="FileInfo" fileName="logs/info.log"
+                     filePattern="logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <!--<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
+            <!--<JsonLayout>-->
+                <!--<KeyValuePair key="ms.name" value="java-test"/>-->
+                <!--<KeyValuePair key="ms.version" value="1.0.8"/>-->
+                <!--&lt;!&ndash;<KeyValuePair key="ms.version" value="$${ctx:key}"/>&ndash;&gt;-->
+            <!--</JsonLayout>-->
+            <!--<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p (%c{1}:%L) - %m%n" />-->
+            <!--<PatternLayout pattern="${hostName} ${ms.name}  %d{yyyy-MM-dd HH:mm:ss,SSS}:%4p (%c{1}:%L) - %m%n" />-->
+            <!--<PatternLayout-->
+                    <!--pattern="&lt;1&gt;%d{MMM dd HH:mm:ss} ${hostName} appName: {-->
+      <!--&quot;host&quot;:&quot;${hostName}&quot;,-->
+      <!--&quot;thread&quot;:&quot;%t&quot;,-->
+      <!--&quot;level&quot;:&quot;%p&quot;,-->
+      <!--&quot;logger&quot;:&quot;%c{1}&quot;,-->
+      <!--&quot;line&quot;:%L,-->
+      <!--&quot;message&quot;:&quot;%enc{%m}&quot;,-->
+      <!--&quot;exception&quot;:&quot;%exception&quot;-->
+      <!--}%n"-->
+            <!--/>-->
+            <!--<PatternLayout pattern='${sys:JSON}' />-->
+            <!--XML5个转义符:<，>，&，”，©;的转义字符分别如下： &lt; &gt;&amp; &quot; &apos;-->
+            <PatternLayout
+                    pattern="{&quot;apiName&quot;:&quot;${ms.name}&quot;,&quot;apiVer&quot;:&quot;${ms.version}&quot;,&quot;host&quot;:&quot;${hostName}&quot;,&quot;date&quot;:&quot;%d{yyyy-MM-dd HH:mm:ss,SSS}&quot;,&quot;level&quot;:&quot;%p&quot;,&quot;logger&quot;:&quot;%c{1}:%L&quot;,&quot;message&quot;:&quot;%enc{%m}&quot;,&quot;thread&quot;:&quot;%t&quot;}%n"
+            />
+            <!--pattern="{&quot;ms.name&quot;:&quot;${ms.name}&quot;,&quot;ms.version&quot;:&quot;${ms.version}&quot;,&quot;host&quot;:&quot;${hostName}&quot;,&quot;date&quot;:&quot;%d{yyyy-MM-dd HH:mm:ss,SSS}&quot;,&quot;level&quot;:&quot;%p&quot;,&quot;logger&quot;:&quot;%c{1}&quot;,&quot;message&quot;:&quot;%enc{%m}&quot;,&quot;exception&quot;:&quot;%exception&quot;,&quot;thread&quot;:&quot;%t&quot;}%n"-->
+      <!--&quot;host&quot;:&quot;${hostName}&quot;,-->
+      <!--&quot;thread&quot;:&quot;%t&quot;,-->
+      <!--&quot;level&quot;:&quot;%p&quot;,-->
+      <!--&quot;logger&quot;:&quot;%c{1}&quot;,-->
+      <!--&quot;line&quot;:%L,-->
+      <!--&quot;message&quot;:&quot;%enc{%m}&quot;,-->
+      <!--&quot;exception&quot;:&quot;%exception&quot;-->
+      <!--}%n"-->
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!--<AsyncLogger name="AsyncLogger" level="debug" includeLocation="true">-->
+            <!--<appender-ref ref="Console" />-->
+            <!--<AppenderRef ref="FileInfo" />-->
+        <!--</AsyncLogger>-->
+
+        <logger name="io.undertow" level="error"/>
+        <!--<logger name="org.mybatis" level="warn"/>-->
+        <logger name="org.springframework" level="warn"/>
+        <logger name="com.peilian.app.Application" level="warn"/>
+        <Logger name="org.apache.kafka.common" level="ERROR" />
+        <logger name="com.peilian" level="debug" additivity="false">
+            <AppenderRef ref="Console" />
+            <!--<AppenderRef ref="FileInfo" />-->
+        </logger>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <!--<AppenderRef ref="FileInfo" />-->
+        </Root>
+    </Loggers>
+</Configuration>

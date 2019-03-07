@@ -10,10 +10,11 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 public class LoginIn {
-    @NotNull(message = "参数信息异常！")
+    /*@NotNull(message = "参数信息异常！")
     private String userName;
 
     @NotNull(message = "参数信息异常！")
-    private String passWord;
+    private String passWord;*/
+    private String userName;
 
 }

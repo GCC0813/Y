@@ -2,6 +2,7 @@ package com.y.controller;
 
 import com.y.common.exceptionHandler.BizException;
 import com.y.entity.Abc;
+import com.y.service.UserService;
 import com.y.vo.JsonOut;
 import com.y.vo.in.LoginIn;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/v1/login")
 public class LoginController {
-
+    @Autowired
+    UserService userService;
     @PostMapping("/login")
     public JsonOut login(@RequestBody @Validated LoginIn in) {
         try {
-            return  new JsonOut<>(200,"成功",in);
+            return  new JsonOut<>(200,"成功",in.getUserName()+userService.abc());
         }catch (BizException e){
             return new JsonOut(e.getCode(),e.getMsg());
         }

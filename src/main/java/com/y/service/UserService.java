@@ -1,7 +1,6 @@
 package com.y.service;
 
 import com.y.entity.Abc;
-import com.y.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     @Autowired
-    UserMapper userMapper;
+    Abc abc;
     public int abc(){
         Abc abc=new Abc();
         return abc.getI();

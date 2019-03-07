@@ -1,4 +1,4 @@
-package com.yabi;
+package com.y;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

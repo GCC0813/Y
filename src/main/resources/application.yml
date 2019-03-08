@@ -9,12 +9,39 @@ spring:
 #数据源
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
+
+#druid配置
     druid:
       initial-size: 5
-    url: jdbc:mysql://47.106.181.97:3306/Y?characterencoding=utf-8
-    username: GCC
-    password: 1234
+      minIdle: 5
+      max-active: 20
+      max-wait: 6000
+      timeBetweenEvictionRunsMillis: 6000
+      minEvictableIdleTimeMillis: 300000
 
+    url: "jdbc:mysql://47.106.181.97:3306/Y?characterencoding=utf-8"
+    username: "GCC"
+    password: "1234"
+#springboot Admin
+  boot:
+    admin:
+      client:
+        url: localhost:${server.port}
+        #        username: GCC
+        #        password: 1234
+#springboot验证
+  security:
+    user:
+      name: GCC
+      password: 1234
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 mybatis:
   mapper-locations: classpath:mybatis/*Mapper.xml
   config-location: classpath:mybatis-config.xml
+#logging:
+#  config: classpath:log4j2-tmp.xml

@@ -9,14 +9,15 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
-@MapperScan("com.y.mapper")
-/*@EnableAutoConfiguration*/
+
+//@EnableAutoConfiguration
 @SpringBootApplication
 @EnableAdminServer
 @Configuration
 @Log4j2
-@ServletComponentScan
+@MapperScan("com.y.mapper")
 public class Application {
 	public static void main(String[] args) {
 		SpringApplication springApplication = new SpringApplication(Application.class);

@@ -98,7 +98,7 @@ public class DruidConfig {
          return servletRegistrationBean;
      }
 
-     @Bean
+    /* @Bean
      public FilterRegistrationBean statFilter() {
          FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
          //添加过滤规则
@@ -106,5 +106,5 @@ public class DruidConfig {
          //忽略过滤的格式
          filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
          return filterRegistrationBean;
-     }
+     }*/
  }

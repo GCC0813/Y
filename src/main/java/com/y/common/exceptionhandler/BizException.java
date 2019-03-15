@@ -1,6 +1,5 @@
-package com.y.common.exceptionHandler;
+package com.y.common.exceptionhandler;
 
-import com.y.common.CodeMsg;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

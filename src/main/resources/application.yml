@@ -1,15 +1,24 @@
 server:
-  port: 5200
+  port: 10000
   servlet:
     context-path: /Y
+  error:
+    include-exception: true
 
 spring:
   application:
     name: Y
+#出现错误时, 直接抛出异常
+#  mvc:
+#    throw-exception-if-no-handler-found: true
+#    static-path-pattern: "classpath:/static"
+#  #关闭工程中的资源文件建立映射
+#  resources:
+#    add-mappings: false
+
 #数据源
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-
 #druid配置
     druid:
       initial-size: 5
@@ -18,15 +27,14 @@ spring:
       max-wait: 6000
       timeBetweenEvictionRunsMillis: 6000
       minEvictableIdleTimeMillis: 300000
-
     url: "jdbc:mysql://47.106.181.97:3306/Y?characterencoding=utf-8"
     username: "GCC"
     password: "1234"
 #springboot Admin
-  boot:
-    admin:
-      client:
-        url: localhost:${server.port}
+#  boot:
+#    admin:
+#      client:
+#         url: localhost:${server.port}
         #        username: GCC
         #        password: 1234
 #springboot验证
@@ -34,6 +42,9 @@ spring:
     user:
       name: GCC
       password: 1234
+
+
+
 
 management:
   endpoints:
@@ -43,5 +54,6 @@ management:
 mybatis:
   mapper-locations: classpath:mybatis/*Mapper.xml
   config-location: classpath:mybatis-config.xml
-#logging:
-#  config: classpath:log4j2-tmp.xml
+
+logging:
+  config: classpath:log4j2-tmp.xml

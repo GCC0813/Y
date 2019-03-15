@@ -8,8 +8,9 @@ public enum CodeMsg {
 	
 	SYSTEM_ERROR(500,"抱歉 系统开小差了！"),
 
-    CODE_200(200, "成功");
+    CODE_200(200, "成功"),
 
+    CODE_1000(1000,"该用户不存在！");
 
     private Integer code;
     private String msg;

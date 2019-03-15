@@ -25,47 +25,47 @@
             <!--</JsonLayout>-->
         </Console>
 
-        <RollingFile name="FileInfo" fileName="logs/info.log"
+      <!--  <RollingFile name="FileInfo" fileName="logs/info.log"
                      filePattern="logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
-            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
-            <!--<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
-            <!--<JsonLayout>-->
-            <!--<KeyValuePair key="ms.name" value="java-test"/>-->
-            <!--<KeyValuePair key="ms.version" value="1.0.8"/>-->
-            <!--&lt;!&ndash;<KeyValuePair key="ms.version" value="$${ctx:key}"/>&ndash;&gt;-->
-            <!--</JsonLayout>-->
-            <!--<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p (%c{1}:%L) - %m%n" />-->
-            <!--<PatternLayout pattern="${hostName} ${ms.name}  %d{yyyy-MM-dd HH:mm:ss,SSS}:%4p (%c{1}:%L) - %m%n" />-->
-            <!--<PatternLayout-->
-            <!--pattern="&lt;1&gt;%d{MMM dd HH:mm:ss} ${hostName} appName: {-->
-            <!--&quot;host&quot;:&quot;${hostName}&quot;,-->
-            <!--&quot;thread&quot;:&quot;%t&quot;,-->
-            <!--&quot;level&quot;:&quot;%p&quot;,-->
-            <!--&quot;logger&quot;:&quot;%c{1}&quot;,-->
-            <!--&quot;line&quot;:%L,-->
-            <!--&quot;message&quot;:&quot;%enc{%m}&quot;,-->
-            <!--&quot;exception&quot;:&quot;%exception&quot;-->
-            <!--}%n"-->
-            <!--/>-->
-            <!--<PatternLayout pattern='${sys:JSON}' />-->
-            <!--XML5个转义符:<，>，&，”，©;的转义字符分别如下： &lt; &gt;&amp; &quot; &apos;-->
+            &lt;!&ndash;控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）&ndash;&gt;
+            &lt;!&ndash;<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>&ndash;&gt;
+            &lt;!&ndash;<JsonLayout>&ndash;&gt;
+            &lt;!&ndash;<KeyValuePair key="ms.name" value="java-test"/>&ndash;&gt;
+            &lt;!&ndash;<KeyValuePair key="ms.version" value="1.0.8"/>&ndash;&gt;
+            &lt;!&ndash;&lt;!&ndash;<KeyValuePair key="ms.version" value="$${ctx:key}"/>&ndash;&gt;&ndash;&gt;
+            &lt;!&ndash;</JsonLayout>&ndash;&gt;
+            &lt;!&ndash;<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p (%c{1}:%L) - %m%n" />&ndash;&gt;
+            &lt;!&ndash;<PatternLayout pattern="${hostName} ${ms.name}  %d{yyyy-MM-dd HH:mm:ss,SSS}:%4p (%c{1}:%L) - %m%n" />&ndash;&gt;
+            &lt;!&ndash;<PatternLayout&ndash;&gt;
+            &lt;!&ndash;pattern="&lt;1&gt;%d{MMM dd HH:mm:ss} ${hostName} appName: {&ndash;&gt;
+            &lt;!&ndash;&quot;host&quot;:&quot;${hostName}&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;thread&quot;:&quot;%t&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;level&quot;:&quot;%p&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;logger&quot;:&quot;%c{1}&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;line&quot;:%L,&ndash;&gt;
+            &lt;!&ndash;&quot;message&quot;:&quot;%enc{%m}&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;exception&quot;:&quot;%exception&quot;&ndash;&gt;
+            &lt;!&ndash;}%n"&ndash;&gt;
+            &lt;!&ndash;/>&ndash;&gt;
+            &lt;!&ndash;<PatternLayout pattern='${sys:JSON}' />&ndash;&gt;
+            &lt;!&ndash;XML5个转义符:<，>，&，”，©;的转义字符分别如下： &lt; &gt;&amp; &quot; &apos;&ndash;&gt;
             <PatternLayout
                     pattern="{&quot;apiName&quot;:&quot;${ms.name}&quot;,&quot;apiVer&quot;:&quot;${ms.version}&quot;,&quot;host&quot;:&quot;${hostName}&quot;,&quot;date&quot;:&quot;%d{yyyy-MM-dd HH:mm:ss,SSS}&quot;,&quot;level&quot;:&quot;%p&quot;,&quot;logger&quot;:&quot;%c{1}:%L&quot;,&quot;message&quot;:&quot;%enc{%m}&quot;,&quot;thread&quot;:&quot;%t&quot;}%n"
             />
-            <!--pattern="{&quot;ms.name&quot;:&quot;${ms.name}&quot;,&quot;ms.version&quot;:&quot;${ms.version}&quot;,&quot;host&quot;:&quot;${hostName}&quot;,&quot;date&quot;:&quot;%d{yyyy-MM-dd HH:mm:ss,SSS}&quot;,&quot;level&quot;:&quot;%p&quot;,&quot;logger&quot;:&quot;%c{1}&quot;,&quot;message&quot;:&quot;%enc{%m}&quot;,&quot;exception&quot;:&quot;%exception&quot;,&quot;thread&quot;:&quot;%t&quot;}%n"-->
-            <!--&quot;host&quot;:&quot;${hostName}&quot;,-->
-            <!--&quot;thread&quot;:&quot;%t&quot;,-->
-            <!--&quot;level&quot;:&quot;%p&quot;,-->
-            <!--&quot;logger&quot;:&quot;%c{1}&quot;,-->
-            <!--&quot;line&quot;:%L,-->
-            <!--&quot;message&quot;:&quot;%enc{%m}&quot;,-->
-            <!--&quot;exception&quot;:&quot;%exception&quot;-->
-            <!--}%n"-->
+            &lt;!&ndash;pattern="{&quot;ms.name&quot;:&quot;${ms.name}&quot;,&quot;ms.version&quot;:&quot;${ms.version}&quot;,&quot;host&quot;:&quot;${hostName}&quot;,&quot;date&quot;:&quot;%d{yyyy-MM-dd HH:mm:ss,SSS}&quot;,&quot;level&quot;:&quot;%p&quot;,&quot;logger&quot;:&quot;%c{1}&quot;,&quot;message&quot;:&quot;%enc{%m}&quot;,&quot;exception&quot;:&quot;%exception&quot;,&quot;thread&quot;:&quot;%t&quot;}%n"&ndash;&gt;
+            &lt;!&ndash;&quot;host&quot;:&quot;${hostName}&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;thread&quot;:&quot;%t&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;level&quot;:&quot;%p&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;logger&quot;:&quot;%c{1}&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;line&quot;:%L,&ndash;&gt;
+            &lt;!&ndash;&quot;message&quot;:&quot;%enc{%m}&quot;,&ndash;&gt;
+            &lt;!&ndash;&quot;exception&quot;:&quot;%exception&quot;&ndash;&gt;
+            &lt;!&ndash;}%n"&ndash;&gt;
             <Policies>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
-        </RollingFile>
+        </RollingFile>-->
     </Appenders>
     <Loggers>
         <!--<AsyncLogger name="AsyncLogger" level="debug" includeLocation="true">-->

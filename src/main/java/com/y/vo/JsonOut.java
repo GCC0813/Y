@@ -23,16 +23,22 @@ public class JsonOut<T> {
         this.message = message;
     }
 
-    public JsonOut(int code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
-
     public T getData() {
         if (data == null) {
-            return (T) new HashMap<>();
+            if (this.getCode() == 200) {
+                return (T) "｡◕‿◕｡";
+            } else {
+                return (T) "｡◕︵◕｡";
+            }
+            //return (T) new HashMap<>();
         }
         return data;
+    }
+
+   public String getMessage() {
+        if (data != null) {
+            return "｡◕‿◕｡";
+        }
+        return message;
     }
 }

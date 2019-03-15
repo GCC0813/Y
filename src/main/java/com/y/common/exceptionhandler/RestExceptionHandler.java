@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestControllerAdvice
 public class RestExceptionHandler {
+
    /**
      * 系统异常处理，比如：404,500
      * @param req
@@ -29,19 +30,15 @@ public class RestExceptionHandler {
      * @throws Exception
      */
     @ExceptionHandler(value = Exception.class)
-    public UnifiedExceptionReturn defaultErrorHandler(HttpServletRequest req, HttpServletResponse res , Exception e ) throws Exception {
-        UnifiedExceptionReturn u = new UnifiedExceptionReturn();
+    public UnifiedExceptionReturn defaultErrorHandler(HttpServletRequest req, HttpServletResponse res , Exception e ) {
+
         if (e instanceof NoHandlerFoundException) {
-            u.setCode(404);
-            u.setMessage("无对应请求地址！");
-        } else if(e instanceof MethodArgumentNotValidException){
-            u.setCode(300);
-            u.setMessage(((MethodArgumentNotValidException) e).getBindingResult().getFieldError().getDefaultMessage());
-        }else{
-            u.setCode(500);
-            u.setMessage("请求出错！");
+            return new UnifiedExceptionReturn(404,"请求无响应。","｡◕_◕｡");
         }
-        return u;
+        if(e instanceof MethodArgumentNotValidException){
+            return new UnifiedExceptionReturn(300,((MethodArgumentNotValidException) e).getBindingResult().getFieldError().getDefaultMessage(),"｡◕_◕｡");
+        }
+        return new UnifiedExceptionReturn(500,"网络开小差了。","｡◕_◕｡");
     }
 
 

@@ -9,14 +9,14 @@ spring:
   application:
     name: Y
 #出现错误时, 直接抛出异常
-#  mvc:
-#    throw-exception-if-no-handler-found: true
-#    static-path-pattern: "classpath:/static"
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: "/static/**"
 #  #关闭工程中的资源文件建立映射
-#  resources:
-#    add-mappings: false
-
-#数据源
+  resources:
+    add-mappings: false
+#    static-locations: "classpath:/static"
+ #数据源
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
 #druid配置

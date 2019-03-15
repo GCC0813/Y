@@ -18,6 +18,13 @@ import java.util.List;
 public class UnifiedExceptionReturn {
     private int code;
     private String message;
+    private String status;
+
+    public UnifiedExceptionReturn(int code, String message, String status) {
+        this.code = code;
+        this.message = message;
+        this.status = status;
+    }
 }
 
 

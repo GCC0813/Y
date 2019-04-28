@@ -1,5 +1,5 @@
 server:
-  port: 10000
+  port: 5200
   servlet:
     context-path: /Y
   error:

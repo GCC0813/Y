@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -38,8 +39,11 @@ public class UserServiceImpl implements UserService {
             log.info(e);
             throw new BizException(e.getCode(),e.getMsg());
         }catch (Exception e){
+            log.error(e);
             throw new BizException(CodeMsg.SYSTEM_ERROR.getCode(),CodeMsg.SYSTEM_ERROR.getMsg());
         }
         return userList;
     }
+
 }
+

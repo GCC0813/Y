@@ -10,8 +10,9 @@ public enum CodeMsg {
 
     CODE_200(200, "成功"),
 
-    CODE_1000(1000,"该用户不存在！");
+    CODE_1000(1000,"参数信息异常"),
 
+	CODE_1000001(1000001,"该用户不存在");
     private Integer code;
     private String msg;
 

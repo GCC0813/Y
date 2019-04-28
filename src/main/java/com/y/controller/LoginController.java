@@ -1,9 +1,9 @@
 package com.y.controller;
 
-import com.y.common.CodeMsg;
 import com.y.common.exceptionhandler.BizException;
 import com.y.entity.User;
 import com.y.service.UserService;
+import com.y.util.NetUtil;
 import com.y.vo.JsonOut;
 import com.y.vo.in.LoginIn;
 import lombok.extern.log4j.Log4j2;
@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author GCC.
@@ -22,16 +25,21 @@ import java.util.List;
  */
 @Log4j2
 @RestController
-@RequestMapping("/v1/login")
+@RequestMapping("/v1/user")
 public class LoginController {
     @Autowired
     UserService userService;
+    @Autowired
+    HttpServletRequest httpServletRequest;
 
     @PostMapping("/login")
     public JsonOut login(@RequestBody @Validated LoginIn in) {
-        JsonOut<List<User>> jsonOut = new JsonOut<>();
+        JsonOut<Map> jsonOut = new JsonOut<>();
         try {
-            jsonOut.setData(userService.selectById(in));
+            Map<String,Object> data = new HashMap<>();
+            data.put("user",userService.selectById(in));
+            data.put("ip", NetUtil.getIpAddress(httpServletRequest));
+            jsonOut.setData(data);
         }catch (BizException e){
             log.info("");
             return new JsonOut(e.getCode(),e.getMsg());
